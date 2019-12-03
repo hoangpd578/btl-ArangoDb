@@ -1,0 +1,52 @@
+In ra thông tin của person "Penelope_Shinichi_Gilbert"
+FOR c in Person
+	FILTER c.name == "Penelope_Shinichi_Gilbert"
+	RETURN c
+
+***        
+In ra thông tin sự kiện "APPLE_SPECIAL_EVENT" được tổ chức đầu tiên tại "Norway"
+FOR c in Event
+	FILTER c.time == "Norway"
+	RETURN c
+***
+In thông tin 10 người đầu tiên có tuổi là 35
+FOR c IN Person
+	FILTER c.age = 35
+	LIMIT 10
+	RETURN c 
+***
+Đếm số quốc gia có GDP lơn hơn 5000
+FOR c IN Country
+	FILTER c.GDP >= 5000
+	RETURN COUNT(c)
+***
+In ra thông tin các quốc gia có diện tích lớn hơn 1000000
+FOR c IN Country
+	FILTRT c.area >= 1000000
+	RETURN c
+***
+In ra thông tin những nước có dân số thấp hơn 100000 nhưng có GPD cao hơn 5000 
+FOR c IN Country:
+	FILTER c.population < 100000 AND c.GDP > 5000
+	RETURN c
+***
+In ra những người tên bắt đầu bằng chữ P
+FOR c in Person
+	FILTER c.name LIKE "P%"
+	RETURN c
+***
+In ra thông tin những người có độ tuổi [32, 33, 40, 57, 64]
+FOR c IN Person
+	FILTER c.age in [32, 33, 40, 57, 64]
+	RETURN c
+***
+In ra thông tin các sự kiện được lưu trong csdl
+FOR c IN Event
+	RETURN c
+***
+#In ra tên hiển thị của 500 người đầu tiên có giới tính là Nam
+FOR c in Person 
+	LIMIT 500
+	FILTER c.sex == 'male"
+	RETURN c
+***

@@ -1,0 +1,53 @@
+In ra những người tổ chức event 4 và hủy bỏ hợp đồng số 4
+FOR c IN Person:
+	FILTER c.ToChucEvent == "Event4" AND c."HuyBoAgreement" == "Agreement4"
+	RETURN c
+***
+In ra tên các event mà  người "-" và "__" thành phố  phản đối tổ chức
+FOR c in Person	
+	FOR a in Location
+		FILTER c.PhanDoiEvent == a.PhanDoiEvent 
+		RETURN c
+  
+
+***
+In ra tên và ngày sinh nhật của những người đã đến tham gia Event4 và có tuổi >30
+FOR c IN Person
+	FILTER c.ThamGiaEvent == "Event4" AND c.age > 30
+	RETURN c
+	
+***
+In ra những Event do tổ chức và thành lập vào ngày
+FOR c IN Organization
+	FILTER c.name == "" and c.founding_day == ""
+	RETURN c
+***
+In ra tên của 20 nước có GDP cao nhất 
+FOR c IN Location:
+	LIMIT 20
+	FILTER c.GDP >= 100000
+	RETURN c
+***
+In ra thông tin sự kiện "APPLE_SPECIAL_EVENT" được tổ chức đầu tiên tại "Norway"
+FOR c in Event
+	FILTER c.time == "Norway"
+	RETURN c
+***
+In ra thông tin công ty Event do Person "..." tổ chức và được diễn ra taị ""
+FOR c IN Person
+	FOR a IN Event
+		FILTER c.ToChucEvent == "" AND a.DienRaTai == ""
+		RETURN c
+***
+In ra thông tin những người có độ tuổi [32, 33, 40, 57, 64]
+FOR c IN Person
+	FILTER c.age in [32, 33, 40, 57, 64]
+	RETURN c
+***
+
+***
+In ra các Event diễn ra tại 
+FOR c in Event
+	FILTER c.DienRaTai == ""
+	RETURN c
+***
